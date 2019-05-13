@@ -1,0 +1,486 @@
+
+**** 12/07/18 17:34:21 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-testac"  [ \\gaia\sugimots\EEE230\Project_2\opamp_2-stageN_DM_2\opamp_2-stageN_DM\opamp_2stagen-pspicefiles\
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "testac.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+.LIB "../../../opamp_2stagen-pspicefiles/opamp_2stagen.lib" 
+* From [PSPICE NETLIST] section of C:\Users\sugimots\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.AC DEC 10 1k 1g
+.OP
+.OPTIONS ADVCONV
+.OPTIONS NUMDGT= 5
+.OPTIONS RELTOL= 0.0001
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source OPAMP_2STAGEN
+M_M1         VO1P VIN VTAIL VSSA N35  
++ L={l1}  
++ W={w1}          
++ M={m1}
+M_M2         VO1N VIP VTAIL VSSA N35  
++ L={l1}  
++ W={w1}          
++ M={m1}
+M_M9         VTAIL VCMFBK1 VSSA VSSA N35  
++ L={l0}  
++ W={w0}          
++ M={m9}
+M_M8         VOP VBN VSSA VSSA N35  
++ L={l0}  
++ W={w0}          
++ M={m7}
+M_M0         VBN VBN VSSA VSSA N35  
++ L={l0}  
++ W={w0}          
++ M={m0}
+M_M3         VO1P VBP VDDA VDDA P35  
++ L={l3}  
++ W={w3}          
++ M={m3}
+M_M4         VO1N VBP VDDA VDDA P35  
++ L={l3}  
++ W={w3}          
++ M={m3}
+M_M6         VOP VO1N VDDA VDDA P35  
++ L={l3}  
++ W={w3}          
++ M={m5}
+I_Ibias         VBP VBN DC {ibias}  
+C_Ccp         VO1N VRCP  {cc}  TC=0,0 
+R_Rcp         VRCP VOP  {rc} TC=0,0 
+V_Vdda         VDDA 0 {vdda}
+V_Vssa         VSSA 0 {vssa}
+C_CLp         VSSA VOP  {cl}  TC=0,0 
+R_Rcn         VRCN VON  {rc} TC=0,0 
+C_CLn         VSSA VON  {cl}  TC=0,0 
+M_M5         VON VO1P VDDA VDDA P35  
++ L={l3}  
++ W={w3}          
++ M={m5}
+C_Ccn         VO1P VRCN  {cc}  TC=0,0 
+M_M7         VON VBN VSSA VSSA N35  
++ L={l0}  
++ W={w0}          
++ M={m7}
+V_Vocmref         VOCMREF 0 DC {vocmref} AC 0
++PULSE {vocmref} {vocmref} {td+1} {tr} {tr} {pw} {per}
+V_Vicm         VICM 0 DC {vicm} AC 0
++PULSE {vicm} {vicm} {td+1} {tr} {tr} {pw} {per}
+V_Vidm         VIDM 0 DC 0 AC 1
++PULSE {vs1} {vs2} {td} {tr} {tr} {pw} {per}
+E_Ecmfbk         VCMFBK1 VCMBIAS VOCMAC VOCMREF {acm}
+E_Evbn         VCMBIAS VSSA VBN VSSA 1
+E_Ecmn         VCMX VSSA VON VSSA 0.5
+E_Ecmp         VOCM VCMX VOP VSSA 0.5
+E_Edmn         VDMX VSSA VON VSSA -1
+C_Cbig1         VSSA VODMAC  1e12  TC=0,0 
+L_Lbig2         VOCM VOCMAC  1e12  
+C_Cbig2         VSSA VOCMAC  1e12  TC=0,0 
+E_Edmp         VODM VDMX VOP VSSA 1
+L_Lbig1         VODM VODMAC  1e12  
+E_Efbkn         VINX VICM VODMAC VSSA {0.5/adm}
+E_Efbkp         VIPX VICM VODMAC VSSA {-0.5/adm}
+E_Ein         VIN VINX VIDM VSSA -0.5
+E_Eip         VIP VIPX VIDM VSSA 0.5
+M_M3b         VBP VBP VDDA VDDA P35  
++ L={l3}  
++ W={w3}          
++ M={m3b}
+.PARAM  l3=1u rc=79.37 cc=14pf w3=80u m9=16 vicm=1.8 cl=2pf per=100ns vstep=10m
++  vs1={(vstep/2)*-1} m7=16 vs2={(vstep/2)} adm=1 vssa=0.0 m5=16 ibias=130u m3=8
++  m0=2 tr={0.01*per} m1=2 vdda=3.0 td={per/5} acm=-1 vocmref=1.5 pw={per/2 - tr}
++  l1=1.5u w0=12u m3b=2 l0=0.5u w1=175u
+
+**** RESUMING testac.cir ****
+.END
+
+WARNING(ORPSIM-15235): Mosfet M_M1, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M1, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15236): Parameter XL in model N35 is invalid - Ignored
+
+WARNING(ORPSIM-15235): Mosfet M_M2, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M2, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M9, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M9, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M8, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M8, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M0, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M0, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M7, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M7, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M3, model P35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M3, model P35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15236): Parameter XL in model P35 is invalid - Ignored
+
+WARNING(ORPSIM-15235): Mosfet M_M4, model P35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M4, model P35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M6, model P35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M6, model P35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M5, model P35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M5, model P35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M3b, model P35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M3b, model P35: Ps = 0 is less than W
+
+INFO(ORPSIM-15454): Model N35: Using BSIM VERSION 3.1 or lower
+
+INFO(ORPSIM-15454): Model P35: Using BSIM VERSION 3.1 or lower
+
+**** 12/07/18 17:34:21 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-testac"  [ \\gaia\sugimots\EEE230\Project_2\opamp_2-stageN_DM_2\opamp_2-stageN_DM\opamp_2stagen-pspicefiles\
+
+
+ ****     MOSFET MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               N35             P35             
+               NMOS            PMOS            
+  T_Measured   27              27            
+   T_Current   27              27            
+       LEVEL    7               7            
+           L  100.000000E-06  100.000000E-06 
+           W  100.000000E-06  100.000000E-06 
+         VTO     .500817        -.73241      
+          KP  258.985800E-06  258.985800E-06 
+       GAMMA    0               0            
+      LAMBDA    0               0            
+         RSH    3.3             2.6          
+          IS    1.000000E-15    1.000000E-15 
+          JS  100.000000E-06  100.000000E-06 
+          PB     .76131          .99         
+        PBSW     .99             .99         
+          CJ    1.025196E-03    1.413411E-03 
+        CJSW  304.889800E-12  413.447500E-12 
+          MJ     .317902         .554975     
+        MJSW     .129984         .359071     
+        CGSO  284.000000E-12  317.000000E-12 
+        CGDO  284.000000E-12  317.000000E-12 
+        CGBO    1.000000E-12    1.000000E-12 
+         TOX    8.000000E-09    8.000000E-09 
+          XJ  100.000000E-09  100.000000E-09 
+       UCRIT   10.000000E+03   10.000000E+03 
+       DELTA     .01             .01         
+      DIOMOD    2               2            
+          K1     .560441         .437215     
+          K2     .018158        -.015375     
+        LETA    0               0            
+        WETA    0               0            
+          U0  420.4579        156.9094       
+       XPART     .5              .5          
+        VTH0     .500817        -.73241      
+          K3    1.000000E-03   48.56546      
+          W0  100.000000E-09    6.212362E-06 
+         NLX  191.724900E-09  181.412800E-09 
+        DVT0    3.668407         .837146     
+        DVT1     .928603         .338643     
+          UA  851.169300E-15  100.000000E-12 
+          UB    1.453932E-18    2.067254E-18 
+          UC   29.918750E-12  -15.668900E-12 
+        VSAT  191.549500E+03  200.000000E+03 
+        RDSW  712.8164          1.978024E+03 
+        VOFF    -.080063        -.110788     
+     NFACTOR    1.337384        1.671477     
+        PCLM    1.201836        4.17521      
+      PDIBL1     .998253         .010832     
+      PDIBL2    6.597790E-03    2.223514E-03 
+       DROUT    1                .067443     
+      PSCBE1    7.195354E+09   18.801350E+09 
+      PSCBE2  500.000000E-12  500.000000E-12 
+          A0    1.237091         .589254     
+          A1    0             913.214300E-06 
+          A2     .386458         .415044     
+       NPEAK  220.000000E+15   85.200000E+15 
+         LDD    0               0            
+        LITL   48.989790E-09   48.989790E-09 
+         UA1    4.310000E-09    4.310000E-09 
+         UB1   -7.610000E-18   -7.610000E-18 
+         UC1  -56.000000E-12  -56.000000E-12 
+        PVAG     .010021        5.946197     
+        KETA    7.802194E-03   -1.017019E-03 
+        ETA0     .180933         .023149     
+        ETAB    4.990909E-03     .022032     
+         K3B     .513871       -5            
+        DVT2    -.257373        -.022621     
+        DSUB     .441464         .63646      
+      MOBMOD    1               1            
+         AGS     .170423         .307773     
+       DVT1W    0               0            
+       DVT2W    0               0            
+        PRWG     .125035         .01057      
+        PRWB    -.097102         .063346     
+     PDIBLCB     .098831       -1.000000E-03 
+         DWG   -4.483031E-09  -17.734010E-09 
+         DWB   11.254670E-09   13.335540E-09 
+          B0  575.674000E-09    3.190353E-06 
+          B1    5.000000E-06    5.000000E-06 
+        LINT   -2.566383E-09  -38.879990E-09 
+        WINT   87.880570E-09   85.463230E-09 
+          WW   -1.221820E-15 -522.182000E-18 
+         WWN    1.1907          1.215        
+         DLC   -2.566383E-09  -38.879990E-09 
+         DWC   87.880570E-09   85.463230E-09 
+          CF    0               0            
+        NOIA  100.000000E+18    9.900000E+18 
+        NOIB   50.000000E+03    2.400000E+03 
+        NOIC   -1.400000E-12    1.400000E-12 
+       LKETA   -4.425361E-03   -8.660913E-03 
+       WKETA -916.373200E-06  543.174000E-06 
+       PVTH0    -.022956        9.795915E-03 
+       PRDSW -109.7037       -123.4368       
+         PK2    3.472875E-03    1.008100E-03 
+         VTM     .025864         .025864     
+     VERSION    3.1             3.1          
+       PBSWG     .99             .99         
+       MJSWG     .129984         .359071     
+       CJSWG  182.000000E-12   44.200000E-12 
+
+
+WARNING(ORPSIM-15235): Mosfet M_M1, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M1, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15236): Parameter XL in model N35 is invalid - Ignored
+
+WARNING(ORPSIM-15235): Mosfet M_M9, model N35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M9, model N35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M3, model P35: Pd = 0 is less than W
+
+WARNING(ORPSIM-15235): Mosfet M_M3, model P35: Ps = 0 is less than W
+
+WARNING(ORPSIM-15236): Parameter XL in model P35 is invalid - Ignored
+
+**** 12/07/18 17:34:21 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-testac"  [ \\gaia\sugimots\EEE230\Project_2\opamp_2-stageN_DM_2\opamp_2-stageN_DM\opamp_2stagen-pspicefiles\
+
+
+ ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(  VBN)    .75723  (  VBP)   2.08562  (  VIN)   1.80000  (  VIP)   1.80000      
+
+(  VON)   1.50254  (  VOP)   1.50254  ( VCMX)    .75127  ( VDDA)   3.00000      
+
+( VDMX)  -1.50254  ( VICM)   1.80000  ( VIDM)   0.00000  ( VINX)   1.80000      
+
+( VIPX)   1.80000  ( VO1N)   2.07575  ( VO1P)   2.07575  ( VOCM)   1.50254      
+
+( VODM)-888.18E-18 ( VRCN)   1.50254  ( VRCP)   1.50254  ( VSSA)   0.00000      
+
+(VTAIL)    .87666  (VOCMAC)   1.50254 (VODMAC)-888.18E-18                       
+
+(VCMBIAS)    .75723                   (VCMFBK1)    .75469                       
+
+(VOCMREF)   1.50000                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_Vdda      -3.593E-03
+    V_Vssa       3.593E-03
+    V_Vocmref    0.000E+00
+    V_Vicm       0.000E+00
+    V_Vidm       0.000E+00
+
+    TOTAL POWER DISSIPATION   1.08E-02  WATTS
+
+
+**** 12/07/18 17:34:21 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-testac"  [ \\gaia\sugimots\EEE230\Project_2\opamp_2-stageN_DM_2\opamp_2-stageN_DM\opamp_2stagen-pspicefiles\
+
+
+ ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
+
+
+******************************************************************************
+
+
+
+
+
+
+**** VOLTAGE-CONTROLLED VOLTAGE SOURCES
+
+
+NAME         E_Ecmfbk    E_Evbn      E_Ecmn      E_Ecmp      E_Edmn    
+V-SOURCE    -2.541E-03   7.572E-01   7.513E-01   7.513E-01  -1.503E+00
+I-SOURCE     0.000E+00   0.000E+00   0.000E+00   0.000E+00   0.000E+00
+
+NAME         E_Edmp      E_Efbkn     E_Efbkp     E_Ein       E_Eip     
+V-SOURCE     1.503E+00  -4.441E-16   4.441E-16   0.000E+00   0.000E+00
+I-SOURCE     0.000E+00   0.000E+00   0.000E+00   0.000E+00   0.000E+00
+
+
+**** MOSFETS
+
+
+NAME         M_M1        M_M2        M_M9        M_M8        M_M0      
+MODEL        N35         N35         N35         N35         N35       
+ID           5.20E-04    5.20E-04    1.04E-03    1.21E-03    1.30E-04 
+VGS          9.23E-01    9.23E-01    7.55E-01    7.57E-01    7.57E-01 
+VDS          1.20E+00    1.20E+00    8.77E-01    1.50E+00    7.57E-01 
+VBS         -8.77E-01   -8.77E-01    0.00E+00    0.00E+00    0.00E+00 
+VTH          7.68E-01    7.68E-01    5.73E-01    5.65E-01    5.75E-01 
+VDSAT        1.59E-01    1.59E-01    1.59E-01    1.66E-01    1.59E-01 
+Lin0/Sat1   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+if          -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+ir          -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+TAU         -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+GM           5.83E-03    5.83E-03    1.04E-02    1.13E-02    1.30E-03 
+GDS          2.57E-05    2.57E-05    2.26E-04    2.32E-04    2.91E-05 
+GMB          1.32E-03    1.32E-03    3.07E-03    3.34E-03    3.83E-04 
+CBD          0.00E+00    0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CBS          0.00E+00    0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGSOV        9.94E-14    9.94E-14    5.45E-14    5.45E-14    6.82E-15 
+CGDOV        9.94E-14    9.94E-14    5.45E-14    5.45E-14    6.82E-15 
+CGBOV        1.50E-18    1.50E-18    5.00E-19    5.00E-19    5.00E-19 
+ Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
+DQGDVGB      1.95E-12    1.95E-12    4.43E-13    4.43E-13    5.54E-14 
+DQGDVDB     -9.93E-14   -9.93E-14   -4.92E-14   -4.92E-14   -6.16E-15 
+DQGDVSB     -1.77E-12   -1.77E-12   -3.75E-13   -3.75E-13   -4.68E-14 
+DQDDVGB     -8.49E-13   -8.49E-13   -1.90E-13   -1.90E-13   -2.38E-14 
+DQDDVDB      9.93E-14    9.93E-14    5.19E-14    5.19E-14    6.49E-15 
+DQDDVSB      9.23E-13    9.23E-13    1.81E-13    1.82E-13    2.27E-14 
+DQBDVGB     -2.52E-13   -2.52E-13   -6.25E-14   -6.25E-14   -7.80E-15 
+DQBDVDB     -5.63E-17   -5.63E-17   -8.37E-16   -8.11E-16   -1.07E-16 
+DQBDVSB     -1.74E-13   -1.74E-13   -4.22E-14   -4.20E-14   -5.27E-15 
+
+NAME         M_M3        M_M4        M_M6        M_M5        M_M7      
+MODEL        P35         P35         P35         P35         N35       
+ID          -5.20E-04   -5.20E-04   -1.21E-03   -1.21E-03    1.21E-03 
+VGS         -9.14E-01   -9.14E-01   -9.24E-01   -9.24E-01    7.57E-01 
+VDS         -9.24E-01   -9.24E-01   -1.50E+00   -1.50E+00    1.50E+00 
+VBS          0.00E+00    0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+VTH         -7.63E-01   -7.63E-01   -7.63E-01   -7.63E-01    5.65E-01 
+VDSAT       -1.76E-01   -1.76E-01   -1.85E-01   -1.85E-01    1.66E-01 
+Lin0/Sat1   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+if          -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+ir          -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+TAU         -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00   -1.00E+00 
+GM           5.71E-03    5.71E-03    1.26E-02    1.26E-02    1.13E-02 
+GDS          4.62E-05    4.62E-05    8.88E-05    8.88E-05    2.32E-04 
+GMB          1.23E-03    1.23E-03    2.71E-03    2.71E-03    3.34E-03 
+CBD          0.00E+00    0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CBS          0.00E+00    0.00E+00    0.00E+00    0.00E+00    0.00E+00 
+CGSOV        2.03E-13    2.03E-13    4.06E-13    4.06E-13    5.45E-14 
+CGDOV        2.03E-13    2.03E-13    4.06E-13    4.06E-13    5.45E-14 
+CGBOV        1.00E-18    1.00E-18    1.00E-18    1.00E-18    5.00E-19 
+ Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
+DQGDVGB      2.66E-12    2.66E-12    5.33E-12    5.33E-12    4.43E-13 
+DQGDVDB     -2.03E-13   -2.03E-13   -4.05E-13   -4.05E-13   -4.92E-14 
+DQGDVSB     -2.23E-12   -2.23E-12   -4.48E-12   -4.48E-12   -3.75E-13 
+DQDDVGB     -1.18E-12   -1.18E-12   -2.37E-12   -2.37E-12   -1.90E-13 
+DQDDVDB      2.03E-13    2.03E-13    4.05E-13    4.05E-13    5.19E-14 
+DQDDVSB      1.20E-12    1.20E-12    2.40E-12    2.40E-12    1.82E-13 
+DQBDVGB     -2.98E-13   -2.98E-13   -5.94E-13   -5.94E-13   -6.25E-14 
+DQBDVDB     -1.20E-16   -1.20E-16   -6.75E-17   -6.75E-17   -8.11E-16 
+DQBDVSB     -3.61E-13   -3.61E-13   -7.23E-13   -7.23E-13   -4.20E-14 
+
+NAME         M_M3b     
+MODEL        P35       
+ID          -1.30E-04 
+VGS         -9.14E-01 
+VDS         -9.14E-01 
+VBS          0.00E+00 
+VTH         -7.63E-01 
+VDSAT       -1.76E-01 
+Lin0/Sat1   -1.00E+00 
+if          -1.00E+00 
+ir          -1.00E+00 
+TAU         -1.00E+00 
+GM           1.43E-03 
+GDS          1.16E-05 
+GMB          3.06E-04 
+CBD          0.00E+00 
+CBS          0.00E+00 
+CGSOV        5.07E-14 
+CGDOV        5.07E-14 
+CGBOV        1.00E-18 
+ Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
+DQGDVGB      6.64E-13 
+DQGDVDB     -5.07E-14 
+DQGDVSB     -5.58E-13 
+DQDDVGB     -2.95E-13 
+DQDDVDB      5.07E-14 
+DQDDVSB      2.99E-13 
+DQBDVGB     -7.44E-14 
+DQBDVDB     -3.11E-17 
+DQBDVSB     -9.03E-14 
+
+          JOB CONCLUDED
+
+**** 12/07/18 17:34:21 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-testac"  [ \\gaia\sugimots\EEE230\Project_2\opamp_2-stageN_DM_2\opamp_2-stageN_DM\opamp_2stagen-pspicefiles\
+
+
+ ****     JOB STATISTICS SUMMARY
+
+
+******************************************************************************
+
+
+
+  Total job time (using Solver 1)   =         .13
+
