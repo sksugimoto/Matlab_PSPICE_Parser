@@ -1,5 +1,9 @@
+% Checks the requested MOSFET parameters from a PSPICE .out file.
+% Take the .out file name as a runtime parameter.
 function check_parameters(fname)
-    DEBUG = 1;
+    % Set Logging level
+    DEBUG = 0;
+    % Create Parser object and Parse file
     Parser = Parse_PSPICE_Out(fname);
     MOS_List = Parser.parseFile(Parser);
     if DEBUG
@@ -28,11 +32,14 @@ function check_parameters(fname)
     non_sat = [];   % List of MOSFETs that are out of saturation.
     sat_margin = 0; % Margin by which the MOSFET is out of saturation.
 
+    % Iteratively check each MOSFET.
     for i = 1:numel(MOS_List)
         % Check saturation using the requirement VDS - VTH > 0
         saturation = abs(MOS_List(i).VDS) - abs(MOS_List(i).VDSAT);
+        % If MOSFET is not saturated, add to list.
         if saturation < 0
             non_sat = [non_sat string(MOS_List(i).NAME)];
+            % If MOSFET is furthest from being in saturation, save value.
             if abs(saturation) > sat_margin
                 sat_margin = abs(saturation);
             end
